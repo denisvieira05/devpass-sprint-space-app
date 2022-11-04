@@ -8,7 +8,7 @@ import com.denisvieira05.spaceapp.model.LaunchItem
 
 class LaunchListAdapter : RecyclerView.Adapter<LaunchViewHolder>() {
 
-    lateinit var list : List<LaunchItem>
+    var list : List<LaunchItem> = listOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LaunchViewHolder {
         return LaunchViewHolder.from(parent)
@@ -24,7 +24,8 @@ class LaunchListAdapter : RecyclerView.Adapter<LaunchViewHolder>() {
 class LaunchViewHolder(private val binding: LaunchItemViewBinding) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(item: LaunchItem) {
-        binding.tvName.text = item.name
+        binding.tvName.text = item.details
+//        binding.tvDate.text = item.date
     }
 
     companion object {
