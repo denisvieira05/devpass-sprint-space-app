@@ -38,4 +38,6 @@
     <string name="launch_attempts">Launch Attempts: %d</string>
     <string name="action_settings">Settings</string>
     <string name="toolbar_title">Space App 🚀</string>
+    <string name="past">Past</string>
+    <string name="next">Next</string>
 </resources>
