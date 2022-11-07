@@ -2,6 +2,8 @@ package com.denisvieira05.spaceapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -23,14 +25,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-//        adapter.list = listOf(
-//            LaunchItem(name = "Text01"),
-//            LaunchItem(name = "Text02"),
-//            LaunchItem(name = "Text03"),
-//            LaunchItem(name = "Text04"),
-//            LaunchItem(name = "Text05"),
-//            LaunchItem(name = "Text06")
-//        )
+        setSupportActionBar(binding.toolbar)
 
         adapter = LaunchListAdapter()
         binding.mainRecylerView.layoutManager = LinearLayoutManager(this@MainActivity)
@@ -75,5 +70,21 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when(item.itemId) {
+            R.id.action_settings -> {
+                // start navigation to settings
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 }

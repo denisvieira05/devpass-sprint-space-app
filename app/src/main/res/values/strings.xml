@@ -36,4 +36,6 @@
     <string name="alert_dialog_error_message">Error trying to get list, verify your internet connection and try again</string>
     <string name="launch_successes">Launch Successes: %d</string>
     <string name="launch_attempts">Launch Attempts: %d</string>
+    <string name="action_settings">Settings</string>
+    <string name="toolbar_title">Space App 🚀</string>
 </resources>
