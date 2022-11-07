@@ -2,6 +2,7 @@ package com.denisvieira05.spaceapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.denisvieira05.spaceapp.databinding.ActivityMainBinding
@@ -44,7 +45,8 @@ class MainActivity : AppCompatActivity() {
 
         val callback = service.getNextLaunches()
 
-//        "id": "6243aec2af52800c6e91925d"
+        binding.progressBar.isVisible = true
+
         callback.enqueue(object: Callback<LaunchItem> {
             override fun onResponse(call: Call<LaunchItem>, response: Response<LaunchItem>) {
                 response.body()?.let {
@@ -53,6 +55,8 @@ class MainActivity : AppCompatActivity() {
                     )
                     adapter.notifyDataSetChanged()
                 }
+
+                binding.progressBar.isVisible = false
 
                 println("DNS: On Response ${response.body()}")
             }
@@ -65,7 +69,7 @@ class MainActivity : AppCompatActivity() {
                 ).apply {
                     setAction("Tentar Novamente") { requestData() }
                 }
-
+                binding.progressBar.isVisible = false
 
                 println("DNS: On Response ERROR")
             }
