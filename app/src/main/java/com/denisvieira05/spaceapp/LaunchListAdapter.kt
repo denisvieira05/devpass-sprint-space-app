@@ -1,5 +1,6 @@
 package com.denisvieira05.spaceapp
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -11,7 +12,7 @@ import com.denisvieira05.spaceapp.databinding.LaunchItemViewBinding
 import com.denisvieira05.spaceapp.model.LaunchItem
 import java.util.*
 
-class LaunchListAdapter(private val context: Context) : RecyclerView.Adapter<LaunchViewHolder>() {
+class LaunchListAdapter(private val context: Context?) : RecyclerView.Adapter<LaunchViewHolder>() {
 
     var list: List<LaunchItem> = listOf()
 
@@ -20,7 +21,7 @@ class LaunchListAdapter(private val context: Context) : RecyclerView.Adapter<Lau
     }
 
     override fun onBindViewHolder(holder: LaunchViewHolder, position: Int) {
-        holder.bind(list[position], context)
+        context?.let { holder.bind(list[position], it) }
     }
 
     override fun getItemCount() = list.size
@@ -29,6 +30,7 @@ class LaunchListAdapter(private val context: Context) : RecyclerView.Adapter<Lau
 class LaunchViewHolder(private val binding: LaunchItemViewBinding) :
     RecyclerView.ViewHolder(binding.root) {
 
+    @SuppressLint("SetTextI18n")
     fun bind(item: LaunchItem, context: Context) {
         binding.tvName.text = item.name
         binding.tvStatus.text = getTextStatus(item.success, context)
