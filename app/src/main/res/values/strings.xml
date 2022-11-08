@@ -40,4 +40,6 @@
     <string name="toolbar_title">Space App 🚀</string>
     <string name="past">Past</string>
     <string name="next">Next</string>
+    <string name="success_message">Success</string>
+    <string name="failure_message">Failure</string>
 </resources>

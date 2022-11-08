@@ -6,6 +6,6 @@ import retrofit2.http.GET
 
 interface LaunchItemsService {
 
-    @GET("launches/next")
-    fun getNextLaunches() : Call<LaunchItem>
+    @GET("launches/upcoming")
+    fun getNextLaunches() : Call<List<LaunchItem>>
 }

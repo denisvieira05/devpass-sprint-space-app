@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.toolbar)
 
-        adapter = LaunchListAdapter()
+        adapter = LaunchListAdapter(this)
         binding.mainRecylerView.layoutManager = LinearLayoutManager(this@MainActivity)
         binding.mainRecylerView.adapter = adapter
 
@@ -42,12 +42,10 @@ class MainActivity : AppCompatActivity() {
 
         binding.progressBar.isVisible = true
 
-        callback.enqueue(object: Callback<LaunchItem> {
-            override fun onResponse(call: Call<LaunchItem>, response: Response<LaunchItem>) {
+        callback.enqueue(object: Callback<List<LaunchItem>> {
+            override fun onResponse(call: Call<List<LaunchItem>>, response: Response<List<LaunchItem>>) {
                 response.body()?.let {
-                    adapter.list = listOf(
-                        it
-                    )
+                    adapter.list = it
                     adapter.notifyDataSetChanged()
                 }
 
@@ -56,7 +54,7 @@ class MainActivity : AppCompatActivity() {
                 println("DNS: On Response ${response.body()}")
             }
 
-            override fun onFailure(call: Call<LaunchItem>, t: Throwable) {
+            override fun onFailure(call: Call<List<LaunchItem>>, t: Throwable) {
                 Snackbar.make(
                     binding.root,
                     "Error",
