@@ -8,8 +8,8 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 class TabAdapter(fragment: FragmentManager, lifecycle: Lifecycle) : FragmentStateAdapter(fragment, lifecycle) {
 
     private val tabs = listOf(
-        NextLaunchesListFragment(),
-        NextLaunchesListFragment()
+        NextLaunchesListFragment(LaunchesSourceTypeEnum.NEXT),
+        NextLaunchesListFragment(LaunchesSourceTypeEnum.PAST)
     )
 
     override fun getItemCount() = tabs.size

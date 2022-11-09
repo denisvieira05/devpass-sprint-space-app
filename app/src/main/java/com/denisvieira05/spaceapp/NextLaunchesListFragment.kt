@@ -14,7 +14,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class NextLaunchesListFragment : Fragment() {
+class NextLaunchesListFragment(private val source: LaunchesSourceTypeEnum) : Fragment() {
 
     private lateinit var _binding: FragmentNextLaunchesBinding
     private val binding get() = _binding
@@ -44,9 +44,12 @@ class NextLaunchesListFragment : Fragment() {
 
     private fun requestData() {
         val retrofitClient = NetworkUtils().getRetrofitInstance("https://api.spacexdata.com/v5/")
-        val service = retrofitClient.create(LaunchItemsService::class.java)
+        val service = retrofitClient.create(LaunchItemService::class.java)
 
-        val callback = service.getNextLaunches()
+        val callback = when(source) {
+            LaunchesSourceTypeEnum.NEXT -> service.getNextLaunches()
+            LaunchesSourceTypeEnum.PAST -> service.getPastLaunches()
+        }
 
         binding.progressBar.isVisible = true
 
