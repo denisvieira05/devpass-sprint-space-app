@@ -1,11 +1,11 @@
-package com.denisvieira05.spaceapp.ui.launchlists
+package com.denisvieira05.spaceapp.ui.home
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.denisvieira05.spaceapp.ui.launchlists.LaunchListFragment
-import com.denisvieira05.spaceapp.ui.launchlists.LaunchesSourceTypeEnum
+import com.denisvieira05.spaceapp.ui.home.launchlist.LaunchListFragment
+import com.denisvieira05.spaceapp.ui.home.launchlist.uimodel.LaunchesSourceTypeEnum
 
 class TabAdapter(fragment: FragmentManager, lifecycle: Lifecycle) : FragmentStateAdapter(fragment, lifecycle) {
 

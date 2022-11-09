@@ -1,4 +1,4 @@
-package com.denisvieira05.spaceapp.ui.launchlists
+package com.denisvieira05.spaceapp.ui.home
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

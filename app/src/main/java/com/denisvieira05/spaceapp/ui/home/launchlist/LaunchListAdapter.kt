@@ -1,4 +1,4 @@
-package com.denisvieira05.spaceapp.ui.launchlists
+package com.denisvieira05.spaceapp.ui.home.launchlist
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -7,15 +7,13 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.denisvieira05.spaceapp.utils.DateUtils
-import com.denisvieira05.spaceapp.utils.DateUtils.convertToSimpleDateFormat
 import com.denisvieira05.spaceapp.R
 import com.denisvieira05.spaceapp.databinding.LaunchItemViewBinding
-import com.denisvieira05.spaceapp.domain.launch.LaunchItem
+import com.denisvieira05.spaceapp.ui.home.launchlist.uimodel.LaunchItemUIModel
 
 class LaunchListAdapter(private val context: Context?) : RecyclerView.Adapter<LaunchViewHolder>() {
 
-    var list: List<LaunchItem> = listOf()
+    var list: List<LaunchItemUIModel> = listOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LaunchViewHolder {
         return LaunchViewHolder.from(parent)
@@ -32,16 +30,16 @@ class LaunchViewHolder(private val binding: LaunchItemViewBinding) :
     RecyclerView.ViewHolder(binding.root) {
 
     @SuppressLint("SetTextI18n")
-    fun bind(item: LaunchItem, context: Context) {
+    fun bind(item: LaunchItemUIModel, context: Context) {
         binding.tvName.text = item.name
-        binding.tvStatus.text = getTextStatus(item.success, context)
-        binding.tvDate.text = DateUtils.convertTimestampToDate(item.date)?.convertToSimpleDateFormat()
-        binding.tvNumber.text = "#${item.flightNumber}"
+        binding.tvStatus.text = item.successText
+        binding.tvDate.text = item.dateFormatted
+        binding.tvNumber.text = item.flightNumber
 
-        setImageOnImageView(item.links.patch.small, context, binding.mainImage)
+        setImageOnImageView(item.imageUrl, context, binding.mainImage)
     }
 
-    private fun setImageOnImageView(imageUrl: String, context: Context, mainImage: ImageView) {
+    private fun setImageOnImageView(imageUrl: String?, context: Context, mainImage: ImageView) {
         Glide
             .with(context)
             .load(imageUrl)
@@ -50,10 +48,6 @@ class LaunchViewHolder(private val binding: LaunchItemViewBinding) :
             .into(mainImage)
     }
 
-    private fun getTextStatus(isSuccess: Boolean, context: Context): String {
-        return if (isSuccess) context.getString(R.string.success_message)
-        else context.getString(R.string.failure_message)
-    }
 
     companion object {
         fun from(parent: ViewGroup): LaunchViewHolder {
