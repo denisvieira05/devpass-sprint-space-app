@@ -1,4 +1,4 @@
-package com.denisvieira05.spaceapp
+package com.denisvieira05.spaceapp.ui.launchlists
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -7,10 +7,11 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.denisvieira05.spaceapp.DateUtils.convertToSimpleDateFormat
+import com.denisvieira05.spaceapp.utils.DateUtils
+import com.denisvieira05.spaceapp.utils.DateUtils.convertToSimpleDateFormat
+import com.denisvieira05.spaceapp.R
 import com.denisvieira05.spaceapp.databinding.LaunchItemViewBinding
-import com.denisvieira05.spaceapp.model.LaunchItem
-import java.util.*
+import com.denisvieira05.spaceapp.domain.launch.LaunchItem
 
 class LaunchListAdapter(private val context: Context?) : RecyclerView.Adapter<LaunchViewHolder>() {
 

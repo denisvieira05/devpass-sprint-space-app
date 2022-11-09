@@ -1,4 +1,4 @@
-package com.denisvieira05.spaceapp
+package com.denisvieira05.spaceapp.utils
 
 import java.text.SimpleDateFormat
 import java.time.Instant

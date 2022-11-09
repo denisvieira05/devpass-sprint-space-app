@@ -1,4 +1,4 @@
-package com.denisvieira05.spaceapp.model
+package com.denisvieira05.spaceapp.domain.launch
 
 import com.google.gson.annotations.SerializedName
 

@@ -1,4 +1,4 @@
-package com.denisvieira05.spaceapp
+package com.denisvieira05.spaceapp.ui.launchlists
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,14 +7,16 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.denisvieira05.spaceapp.data.LaunchItemService
+import com.denisvieira05.spaceapp.data.NetworkUtils
 import com.denisvieira05.spaceapp.databinding.FragmentNextLaunchesBinding
-import com.denisvieira05.spaceapp.model.LaunchItem
+import com.denisvieira05.spaceapp.domain.launch.LaunchItem
 import com.google.android.material.snackbar.Snackbar
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class NextLaunchesListFragment(private val source: LaunchesSourceTypeEnum) : Fragment() {
+class LaunchListFragment(private val source: LaunchesSourceTypeEnum) : Fragment() {
 
     private lateinit var _binding: FragmentNextLaunchesBinding
     private val binding get() = _binding
