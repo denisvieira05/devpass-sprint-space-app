@@ -13,6 +13,7 @@ import com.denisvieira05.spaceapp.data.NetworkUtils
 import com.denisvieira05.spaceapp.databinding.FragmentNextLaunchesBinding
 import com.denisvieira05.spaceapp.domain.launch.LaunchItem
 import com.denisvieira05.spaceapp.ui.home.launchlist.uimodel.LaunchItemUIModel
+import com.denisvieira05.spaceapp.ui.home.launchlist.uimodel.LaunchItemUIModelMapper
 import com.denisvieira05.spaceapp.ui.home.launchlist.uimodel.LaunchesSourceTypeEnum
 import com.denisvieira05.spaceapp.utils.DateUtils
 import com.denisvieira05.spaceapp.utils.DateUtils.convertToSimpleDateFormat
@@ -50,11 +51,6 @@ class LaunchListFragment(private val source: LaunchesSourceTypeEnum) : Fragment(
     }
 
 
-    private fun getTextStatus(isSuccess: Boolean): String {
-        return if (isSuccess) getString(R.string.success_message)
-        else getString(R.string.failure_message)
-    }
-
     private fun requestData() {
         val retrofitClient = NetworkUtils().getRetrofitInstance("https://api.spacexdata.com/v5/")
         val service = retrofitClient.create(LaunchItemService::class.java)
@@ -69,20 +65,9 @@ class LaunchListFragment(private val source: LaunchesSourceTypeEnum) : Fragment(
         callback.enqueue(object: Callback<List<LaunchItem>> {
             override fun onResponse(call: Call<List<LaunchItem>>, response: Response<List<LaunchItem>>) {
                 response.body()?.let {
-                    val listUiModel = it.map { item ->
-                            val dateFormatted = DateUtils.convertTimestampToDate(item.date)?.convertToSimpleDateFormat()
-                            dateFormatted?.let { date ->
-                                LaunchItemUIModel(
-                                    item.name,
-                                    getTextStatus(item.success),
-                                    date,
-                                    "#${item.flightNumber}",
-                                    item.links.patch.small
-                                )
-                            }
-                        }
+                    val listUiModel = LaunchItemUIModelMapper(context!!).convert(it)
 
-                    adapter.list = listUiModel.filterNotNull()
+                    adapter.list = listUiModel
                     adapter.notifyDataSetChanged()
                 }
 
