@@ -1,9 +1,9 @@
 package com.denisvieira05.spaceapp.ui.home
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
 import com.denisvieira05.spaceapp.R
 import com.denisvieira05.spaceapp.databinding.ActivityMainBinding
 import com.google.android.material.tabs.TabLayoutMediator

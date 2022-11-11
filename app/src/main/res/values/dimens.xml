@@ -55,4 +55,5 @@
     <dimen name="margin_start_tittle_launchpad">20dp</dimen>
     <dimen name="margin_top_tittle_launchpad">22dp</dimen>
     <dimen name="size_tittle_launchpad_card">20sp</dimen>
+    <dimen name="launch_details_main_image_size">96dp</dimen>
 </resources>

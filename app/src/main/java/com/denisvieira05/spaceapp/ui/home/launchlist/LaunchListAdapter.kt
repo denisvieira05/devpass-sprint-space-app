@@ -11,7 +11,8 @@ import com.denisvieira05.spaceapp.R
 import com.denisvieira05.spaceapp.databinding.LaunchItemViewBinding
 import com.denisvieira05.spaceapp.ui.home.launchlist.uimodel.LaunchItemUIModel
 
-class LaunchListAdapter(private val context: Context?) : RecyclerView.Adapter<LaunchViewHolder>() {
+class LaunchListAdapter(private val context: Context?, private val onClickItem: (launchName: String) -> Unit) :
+    RecyclerView.Adapter<LaunchViewHolder>() {
 
     var list: List<LaunchItemUIModel> = listOf()
 
@@ -20,13 +21,18 @@ class LaunchListAdapter(private val context: Context?) : RecyclerView.Adapter<La
     }
 
     override fun onBindViewHolder(holder: LaunchViewHolder, position: Int) {
-        context?.let { holder.bind(list[position], it) }
+        val itemData = list[position]
+        context?.let { holder.bind(itemData, it) }
+
+        holder.itemView.setOnClickListener {
+            onClickItem.invoke(itemData.name)
+        }
     }
 
     override fun getItemCount() = list.size
 }
 
-class LaunchViewHolder(private val binding: LaunchItemViewBinding) :
+class LaunchViewHolder(val binding: LaunchItemViewBinding) :
     RecyclerView.ViewHolder(binding.root) {
 
     @SuppressLint("SetTextI18n")

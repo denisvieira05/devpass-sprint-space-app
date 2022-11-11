@@ -28,6 +28,10 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
+        <activity android:name=".ui.launchdetails.MainLaunchDetailActivity"
+            android:exported="true"
+            android:theme="@style/Theme.SpaceApp.NoActionBar"/>
     </application>
 
 </manifest>

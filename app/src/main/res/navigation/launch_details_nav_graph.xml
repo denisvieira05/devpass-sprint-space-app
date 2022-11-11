@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/launch_details_nav_graph"
+    app:startDestination="@id/launchDetailFragment">
+
+    <fragment
+        android:id="@+id/launchDetailFragment"
+        android:name="com.denisvieira05.spaceapp.ui.launchdetails.LaunchDetailFragment"
+        android:label="LaunchDetailFragment"
+        tools:layout="@layout/fragment_launch_detail">
+        <action
+            android:id="@+id/action_launchDetailFragment_to_launchDescriptionFragment"
+            app:destination="@id/launchDescriptionFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/launchDescriptionFragment"
+        android:name="com.denisvieira05.spaceapp.ui.launchdetails.LaunchDescriptionFragment"
+        android:label="LaunchDescriptionFragment"
+        tools:layout="@layout/fragment_launch_description"/>
+</navigation>
