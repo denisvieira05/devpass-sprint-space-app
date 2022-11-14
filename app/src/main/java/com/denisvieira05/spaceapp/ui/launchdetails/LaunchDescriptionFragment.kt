@@ -29,10 +29,14 @@ class LaunchDescriptionFragment : Fragment() {
             findNavController().popBackStack()
         }
 
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         val text = arguments?.getString("amount")
         Snackbar.make(binding.root, "Texto: $text", Snackbar.LENGTH_LONG).show()
-
-        return binding.root
     }
 
 }
