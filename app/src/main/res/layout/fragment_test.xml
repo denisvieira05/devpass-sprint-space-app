@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/phoneNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number|text"
+        android:backgroundTint="@android:color/holo_red_dark"
+        android:maxLength="11"
+        android:maxLines="1"/>
+
+<!--    <include android:id="@+id/include_test" layout="@layout/fragment_launch_detail"/>-->
+
+<!--    <androidx.fragment.app.FragmentContainerView-->
+<!--        android:id="@+id/fragment_container"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        />-->
+<!--    -->
+    <com.denisvieira05.spaceapp.ui.ColorOptionsView
+        android:id="@+id/colorOptionsView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:colorValue="@color/black"
+        app:titleText="@string/app_name"
+        app:state="medium"
+        />
+
+    <com.denisvieira05.spaceapp.ui.ColorOptionsView
+        android:id="@+id/colorOptionsView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:colorValue="@color/black"
+        app:titleText="@string/app_name"
+        />
+
+    <com.denisvieira05.spaceapp.ui.ColorOptionsView
+        android:id="@+id/colorOptionsView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:colorValue="@android:color/darker_gray"
+        app:titleText="@string/app_name"
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/test_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TESTE" />
+</LinearLayout>

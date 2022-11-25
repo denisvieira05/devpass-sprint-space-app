@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="ColorOptionsView">
+        <attr name="titleText" format="string" />
+        <attr name="colorValue" format="color" />
+        <attr name="state" format="enum" >
+            <enum name="medium" value="1"/>
+            <enum name="large" value="2"/>
+        </attr>
+    </declare-styleable>
+
+</resources>

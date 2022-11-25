@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.denisvieira05.spaceapp.R
 import com.denisvieira05.spaceapp.databinding.FragmentLaunchDetailBinding
+import com.google.android.material.snackbar.Snackbar
 
 class LaunchDetailFragment : Fragment() {
     private lateinit var _binding: FragmentLaunchDetailBinding
@@ -35,9 +36,17 @@ class LaunchDetailFragment : Fragment() {
         }
 
         binding.mainButton.setOnClickListener {
-            val bundle = bundleOf("amount" to "TESTE JETPACK NAVIGATION ")
-            findNavController().navigate(R.id.action_launchDetailFragment_to_launchDescriptionFragment, bundle)
+//            val bundle = bundleOf("amount" to "TESTE JETPACK NAVIGATION ")
+//            findNavController().navigate(R.id.action_launchDetailFragment_to_launchDescriptionFragment, bundle)
+            Snackbar.make(
+                binding.root,
+                "Error",
+                Snackbar.LENGTH_INDEFINITE
+            ).apply {
+                setAction("Tentar Novamente") { }
+            }.show()
         }
+
     }
 
 }
